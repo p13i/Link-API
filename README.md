@@ -1,9 +1,50 @@
-# Motion Reader API
+# Link API
 
-Web API for Motion Reader
+## API
 
-## Installation
+* `POST /api/link/create/`
+  
+  * Request: 
+    ```
+    { 
+        "long_url": "https://google.com/" 
+    }
+    ```
+  * Response:
+    ```
+    {
+        "id": 1,
+        "long_url": "https://google.com/",
+        "short_url_id": "lez"
+    }
+    ```
 
-1. Install Docker and Docker Compose
-2. Run `docker-compose up`
-3. Visit `localhost:8080`
+* `GET /api/link/list/`
+  
+  * Response:
+    ```
+    [
+        {
+            "id": 1,
+            "long_url": "https://google.com/",
+            "short_url_id": "lez"
+        },
+        {
+            "id": 2,
+            "long_url": "https://bing.com/",
+            "short_url_id": "oli"
+        }
+    ]
+    ```
+
+* `GET /api/link/resolve/<short_url_id>/`
+  
+  * Request: `GET /api/link/resolve/lez`
+  * Response:
+    ```
+    {
+        "id": 1,
+        "long_url": "https://google.com/",
+        "short_url_id": "lez"
+    }
+    ```
